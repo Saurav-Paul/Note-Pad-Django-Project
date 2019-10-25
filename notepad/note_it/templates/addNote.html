@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "nav_bar.html" %}
+
+<div class="container">
+
+    <form action="createNote" method="POST"> {% csrf_token %}
+        <div class="form-group">
+            <label ><strong>Title:</strong> </label>
+            <input type="text-" class="form-control" name='title'
+                placeholder="Title">
+            <small class="form-text text-muted">Title must be less than 150 character.</small>
+        </div>
+        <div class="form-group">
+            <label > <strong>Enter Your Note:</strong> </label>
+            <input type="text" class="form-control" name='desc' placeholder="Description">
+        </div>
+        <!-- <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+</div>
+
+{% endblock content %}

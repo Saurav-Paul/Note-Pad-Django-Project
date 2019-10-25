@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include "nav_bar.html" %}
+<div class="container">
+    {% if user.is_authenticated %}
+    <div class="alert alert-success" role="alert">
+        Welcome {{request.user}}.
+    </div>
+
+    {% for x in obj %}
+
+    <div class="card text-center">
+        <div class="card-header">
+            Note {{forloop.counter}}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ x.title }}</h5>
+            <p class="card-text"> {{ x.desc }} </p>
+            <a href="editNote/{{x.id}}" class="btn btn-primary">Edit</a>
+            <a href="deleteNote/{{x.id}}" class="btn btn-danger">Delete</a>
+        </div>
+        <div class="card-footer text-muted">
+            {{ x.date }}
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+    {% else %}
+    <div class="alert alert-danger" role="alert">
+            You are not logged in . <a href=" {% url 'login' %}">Log in </a> or <a href="{% url 'signup' %}">Sign up</a> to see your note.
+        </div>
+
+
+    <div class="card">
+        <div class="card-header">
+            
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Features:</h5>
+            <p class="card-text"> 
+            <ul>
+                <li> You can add your notes.</li>
+                <li> You can view your notes.</li>
+                <li> Your can edit your notes</li>
+                <li> Your can delete your notes</li>
+            </ul>    
+            </p>
+           
+        </div>
+        <div class="card-footer text-muted">
+            {{ x.date }}
+        </div>
+
+
+
+    </div>
+    
+
+    {% endif %}
+
+</div>
+
+{% endblock content %}

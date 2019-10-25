@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Log In{% endblock %}
+{% block content %}
+
+{% include "nav_bar.html" %}
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            Log In
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+         <i>If you don't have account , <a href="{% url 'signup' %}"> click here to Sign up </a></i>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+{% endblock content %}
